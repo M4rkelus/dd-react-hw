@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>SomeList</title>
+  </head>
+
+  <body>
+    <main class="main">
+      <section class="main__header">
+        <section class="main__header-wrap">
+          <span class="main__header-logo">SomeList</span>
+          <div class="main__header-group-lnk">
+            <a href="#" class="main__header-lnk lnk-active">События</a>
+            <a href="#" class="main__header-lnk">Архив</a>
+          </div>
+        </section>
+      </section>
+
+      <section class="main__wrapper">
+        <section class="main__filter filter">
+          <input
+            type="radio"
+            id="filter__all"
+            class="filter__input visually-hidden"
+            name="filter"
+            checked
+          />
+          <label for="filter__all" class="filter__label">
+            Все <span class="filter__all-count count">13</span></label
+          >
+          <input
+            type="radio"
+            id="filter__overdue"
+            class="filter__input visually-hidden"
+            name="filter"
+          />
+          <label for="filter__overdue" class="filter__label"
+            >Прошедшие <span class="filter__overdue-count count">5</span></label
+          >
+          <input
+            type="radio"
+            id="filter__today"
+            class="filter__input visually-hidden"
+            name="filter"
+            disabled
+          />
+          <label for="filter__today" class="filter__label"
+            >Сегодня <span class="filter__today-count count">0</span></label
+          >
+          <input
+            type="radio"
+            id="filter__future"
+            class="filter__input visually-hidden"
+            name="filter"
+            disabled
+          />
+          <label for="filter__future" class="filter__label"
+            >Будущие <span class="filter__future-count count">0</span></label
+          >
+          <input
+            type="radio"
+            id="filter__favorite"
+            class="filter__input visually-hidden"
+            name="filter"
+          />
+          <label for="filter__favorite" class="filter__label"
+            >Избранное <span class="filter__favorite-count count">1</span></label
+          >
+        </section>
+
+        <section class="board">
+          <form class="board__form">
+            <h2 class="board__title">Добавление события</h2>
+            <fieldset class="board__field board__field--theme">
+              <label for="theme" class="board__label board__label--theme">Тема:</label>
+              <textarea
+                type="text"
+                class="board__input board__input--theme"
+                name="theme"
+                required
+              ></textarea>
+            </fieldset>
+            <fieldset class="board__field board__field--comment">
+              <label for="comment" class="board__label board__label--comment">Комментарий:</label>
+              <textarea
+                type="text"
+                class="board__input board__input--comment"
+                name="comment"
+                required
+              ></textarea>
+            </fieldset>
+            <fieldset class="board__field board__field--date">
+              <label for="date" class="board__label board__label--date">Дата:</label>
+              <input
+                type="datetime-local"
+                class="board__input board__input--date"
+                name="date"
+              />
+            </fieldset>
+            <div class="btns">
+              <button type="submit" class="btn-submit">Добавить</button>
+              <button type="reset" class="btn-reset">Очистить</button>
+            </div>
+          </form>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
