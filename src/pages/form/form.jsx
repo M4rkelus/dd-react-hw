@@ -7,7 +7,6 @@ import NoEvent from "../../components/no-events/no-events";
 const Form = () => {
   return (
     <>
-      {/* <Header mode={AppRoute.MAIN} /> */}
       <Header />
       <section className="main__wrapper">
         <Filter />
