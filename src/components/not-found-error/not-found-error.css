@@ -1,0 +1,28 @@
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+.error__container {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  min-height: 245px;
+}
+
+.error__title {
+  color: brown;
+  font-size: 100px;
+  margin: 0 0 20px;
+}
+
+.error__subtitle {
+  font-size: 40px;
+  margin: 0;
+}
+
+.error__text {
+  margin-bottom: 0;
+}
