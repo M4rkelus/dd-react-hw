@@ -9,7 +9,7 @@ const Form = () => {
     <>
       <Header />
       <section className="main__wrapper">
-        <Filter />
+        <Filter control={false} />
         <Event />
         {/* <NoEvent /> */}
       </section>

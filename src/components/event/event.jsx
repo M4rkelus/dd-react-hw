@@ -1,10 +1,16 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const Event = () => {
+  const { id } = useParams();
+  const render = () => {
+    return id ? "Редактирование события" : "Добавление события";
+  };
+
   return (
     <section className="board">
       <form className="board__form">
-        <h2 className="board__title">Добавление события</h2>
+        <h2 className="board__title">{render()}</h2>
         <fieldset className="board__field board__field--theme">
           <label htmlFor="theme" className="board__label board__label--theme">
             Тема:
