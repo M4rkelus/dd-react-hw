@@ -4,13 +4,13 @@ import Filter from "../../components/filter/filter";
 import Event from "../../components/event/event";
 import NoEvent from "../../components/no-events/no-events";
 
-const Form = () => {
+const Form = ({ events }) => {
   return (
     <>
       <Header />
       <section className="main__wrapper">
         <Filter control={false} />
-        <Event />
+        <Event events={events} />
         {/* <NoEvent /> */}
       </section>
     </>
