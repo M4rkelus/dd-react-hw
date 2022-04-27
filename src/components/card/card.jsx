@@ -3,9 +3,50 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import "moment/locale/ru";
 import "./card.css";
+import { events } from "../../store";
 
-const Card = ({ _id, theme, comment, date, favorite }) => {
+const Card = ({ _id, theme, comment, date, favorite, archive }) => {
   const formatDate = moment(date).format("DD MMMM YYYY");
+
+  const handleToEdit = () => {
+    events.editEvent({
+      id: _id,
+      theme,
+      comment,
+      date,
+      favorite,
+      archive,
+    });
+  };
+
+  const handleToArchive = (evt) => {
+    evt.preventDefault();
+    events.editEvent({
+      id: _id,
+      theme,
+      comment,
+      date,
+      favorite,
+      archive: !archive,
+    });
+  };
+
+  const handleToFavorite = (evt) => {
+    evt.preventDefault();
+    events.editEvent({
+      id: _id,
+      theme,
+      comment,
+      date,
+      archive,
+      favorite: !favorite,
+    });
+  };
+
+  const handleDelete = (evt) => {
+    evt.preventDefault();
+    events.deleteEvent(_id);
+  };
 
   return (
     <article className="card">
@@ -16,10 +57,15 @@ const Card = ({ _id, theme, comment, date, favorite }) => {
               to={`/event/${_id}`}
               type="button"
               className="card__btn card__btn--edit"
+              onClick={handleToEdit}
             >
               Редактировать
             </Link>
-            <button type="button" className="card__btn card__btn--archive">
+            <button
+              type="button"
+              className="card__btn card__btn--archive"
+              onClick={handleToArchive}
+            >
               В архив
             </button>
             <button
@@ -27,10 +73,15 @@ const Card = ({ _id, theme, comment, date, favorite }) => {
               className={`card__btn card__btn--favorites ${
                 favorite && "favorite-on"
               }`}
+              onClick={handleToFavorite}
             >
               В избранное
             </button>
-            <button type="button" className="card__btn card__btn--remove">
+            <button
+              type="button"
+              className="card__btn card__btn--remove"
+              onClick={handleDelete}
+            >
               Удалить
             </button>
           </div>

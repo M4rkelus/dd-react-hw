@@ -4,15 +4,21 @@ import moment from "moment";
 import "moment/locale/ru";
 
 const Event = ({ events }) => {
+  const { data } = events;
   const { id } = useParams();
-  const [currentEvt] = events.filter((event) => event._id === id);
+  const [currentEvt] = data.filter((event) => event._id === id);
   const theme = id ? currentEvt.theme : "";
   const comment = id ? currentEvt.comment : "";
   const formatDate = id
     ? moment(currentEvt.date).format("YYYY-MM-DDThh:mm")
-    : "";
+    : new Date();
+
   const renderTitle = () => {
     return id ? "Редактирование события" : "Добавление события";
+  };
+
+  const renderButton = () => {
+    return id ? "Сохранить" : "Добавить";
   };
 
   const [form, setForm] = useState({
@@ -28,14 +34,21 @@ const Event = ({ events }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(form);
+    currentEvt
+      ? events.editEvent({
+          ...form,
+          id,
+          favorite: currentEvt.favorite,
+          archive: currentEvt.archive,
+        })
+      : events.addEvent(form);
   };
 
   const handleReset = () => {
     setForm({
       theme: "",
       comment: "",
-      date: "",
+      date: new Date(),
     });
   };
 
@@ -90,7 +103,7 @@ const Event = ({ events }) => {
         </fieldset>
         <div className="btns">
           <button type="submit" className="btn-submit">
-            Добавить
+            {renderButton()}
           </button>
           <button type="reset" className="btn-reset">
             Очистить
