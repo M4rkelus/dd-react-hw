@@ -5,28 +5,23 @@ import "moment/locale/ru";
 import "./card.css";
 import { events } from "../../store";
 
-const Card = ({ _id, theme, comment, date, favorite, archive }) => {
+const Card = ({ event }) => {
+  const { _id, theme, comment, date, favorite, archive } = event;
+
   const formatDate = moment(date).format("DD MMMM YYYY");
 
   const handleToEdit = () => {
     events.editEvent({
+      ...event,
       id: _id,
-      theme,
-      comment,
-      date,
-      favorite,
-      archive,
     });
   };
 
   const handleToArchive = (evt) => {
     evt.preventDefault();
     events.editEvent({
+      ...event,
       id: _id,
-      theme,
-      comment,
-      date,
-      favorite,
       archive: !archive,
     });
   };
@@ -34,11 +29,8 @@ const Card = ({ _id, theme, comment, date, favorite, archive }) => {
   const handleToFavorite = (evt) => {
     evt.preventDefault();
     events.editEvent({
+      ...event,
       id: _id,
-      theme,
-      comment,
-      date,
-      archive,
       favorite: !favorite,
     });
   };
